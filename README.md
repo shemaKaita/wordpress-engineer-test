@@ -29,7 +29,9 @@ For the test to be successful, we should be able to install the plugin on a fres
 
 ### 3. Expose the custom post type and meta in the WordPress REST API
 
-### 4. Send the link to your repo back to us
+### 4. Update the readme and add a suggestion to improve this test
+
+### 5. Send the link to your repo back to us
 
 ## Work at Flicker Leap
 
