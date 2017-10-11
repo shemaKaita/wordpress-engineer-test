@@ -47,7 +47,7 @@ class flickerEvents
     }
     /**
      * activate the function to run upon plugin activation.
-     * @return [type] [description]
+     * @return void
      */
     public function activate()
     {
@@ -55,7 +55,7 @@ class flickerEvents
     }
     /**
      * deactivate the function to run upon plugin deactivation.
-     * @return [type] [description]
+     * @return void
      */
     public function deactivate()
     {
