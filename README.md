@@ -42,3 +42,11 @@ Want to work with our tech team? We obviously supply things like coffee and tea.
 This test is released under the MIT Public License.
 
 Note: The "About" section in README.md not be edited or deleted without permission. For details, please see License.
+
+
+
+## My Suggestions
+
+### 0. More detailed requirements for the api part.
+
+### 1. I think it would be cool to make it work with woocommerce, so essentially make the tickets for the events purchasable.
