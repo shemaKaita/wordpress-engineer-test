@@ -14,40 +14,32 @@ class flickerEventsApi extends flickerAction
      */
     public function run()
     {
-        register_rest_route(
-            'flickerEvents/v1/',
-            '/getAllEvents',
+        // register the field for the meta.
+        register_rest_field(
+            'flicker_events',
+            'flicker_event_meta',
             array(
-                'methods'  => 'GET',
-                'callback' => array($this, 'getAllEvents'),
+                'get_callback' => array($this, 'getEventMeta'),
+                'schema'       => null,
             )
         );
     }
     /**
-     * getAllEvents the controller for the getAllEvents route, which returns all the events and their meta.
-     * @param  object $request the request.
-     * @return object the response.
+     * getEventMeta get the meta for the requested event.
+     * @param  array $object the data for the requested event.
+     * @return array         an array with the meta for the event.
      */
-    public function getAllEvents(WP_REST_Request $request)
+    public function getEventMeta($object)
     {
-        // arguments to query for.
-        $args = [
-            'post_type' => 'flicker_events',
+        // the post id.
+        $id = $object['id'];
+        // the data.
+        $meta = [
+            'date'     => get_post_meta($id, 'flicker_event_date', true),
+            'price'    => get_post_meta($id, 'flicker_event_price', true),
+            'quantity' => get_post_meta($id, 'flicker_event_quantity', true),
         ];
-        // all the events.
-        $posts = get_posts($args);
-
-        // add the events featured images and post meta data.
-        foreach ($posts as $key => $post) {
-            $posts[$key]->post_image = (wp_get_attachment_url(get_post_thumbnail_id($post->ID)) !== false ? wp_get_attachment_url(get_post_thumbnail_id($post->ID)) : null);
-            $posts[$key]->post_meta  = [
-                'date'     => get_post_meta($post->ID, 'flicker_event_date', true),
-                'price'    => get_post_meta($post->ID, 'flicker_event_price', true),
-                'quantity' => get_post_meta($post->ID, 'flicker_event_quantity', true),
-            ];
-        }
-
-        return new WP_REST_Response($posts, 200);
+        return $meta;
     }
 }
 

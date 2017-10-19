@@ -52,7 +52,7 @@ class flickerEventsHooks
             add_action($action->hook, array($action, 'run'), $action->priority);
         }
         foreach ($this::$instance->filters as $key => $filter) {
-            add_filter($action->hook, array($action, 'run'), $action->priority, $action->accepted_args);
+            add_filter($filter->hook, array($filter, 'run'), $filter->priority, $filter->accepted_args);
         }
     }
 

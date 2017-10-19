@@ -62,6 +62,7 @@ class flickerEventsPost extends flickerAction
             'exclude_from_search' => false,
             'publicly_queryable'  => true,
             'capability_type'     => 'page',
+            'show_in_rest'        => true,
         );
         register_post_type('flicker_events', $args);
 
